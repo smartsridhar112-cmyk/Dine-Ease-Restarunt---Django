@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Restarunt</title>
+</head>
+<body>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body > div{
+            width: 100%;
+            max-width: 480px;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
+            text-align: center;
+            margin: 100px 500px;
+        }
+        body > div h1{
+            font-size: 26px;
+            color: #2e7d32;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+        }
+        body > div h4{
+            font-size: 16px;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        body > div p{
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        body > div a{
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            background: #3399cc;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        body > div a:hover{
+            background: #287da3;
+        }
+
+        /* ===== Responsive breakpoints ===== */
+        @media (max-width: 480px){
+            body > div{
+                padding: 35px 25px;
+                border-radius: 10px;
+            }
+            body > div h1{
+                font-size: 21px;
+            }
+            body > div h4{
+                font-size: 14px;
+            }
+            body > div p{
+                font-size: 13px;
+            }
+            body > div a{
+                width: 100%;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 360px){
+            body{
+                padding: 12px;
+            }
+            body > div{
+                padding: 28px 18px;
+            }
+            body > div h1{
+                font-size: 19px;
+            }
+        }
+    </style>
+
+    <div>
+        <h1>Order Placed Sucessfully</h1>
+        <h4>Payment Completed</h4>
+        <p>Thanks for order food with us.</p>
+        <a href="{% url 'my_orders' %}">View My Orders</a>
+    </div>
+</body>
+</html>
+{% endblock %}

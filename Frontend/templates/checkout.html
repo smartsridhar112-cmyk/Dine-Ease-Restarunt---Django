@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Restarunt</title>
+</head>
+<body>
+    <style>
+        .payment-wrap{
+            box-sizing: border-box;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('https://source.unsplash.com/1600x900/?food,restaurant');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .payment-wrap div{
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0px 4px 16px rgba(0,0,0,0.35);
+            text-align: center;
+            background: rgba(255,255,255,0.95);
+        }
+        .payment-wrap h3{
+            font-size: 20px;
+            margin: 0 0 25px 0;
+            word-wrap: break-word;
+            color: #1a1a1a;
+        }
+        .payment-wrap #rzp-button{
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            background: #3399cc;
+            color: white;
+            cursor: pointer;
+        }
+        .payment-wrap #rzp-button:hover{
+            background: #287da3;
+        }
+
+        /* ===== Responsive breakpoints ===== */
+        @media (max-width: 600px){
+            .payment-wrap{
+                background-attachment: scroll;
+            }
+            .payment-wrap div{
+                padding: 30px 25px;
+                border-radius: 12px;
+                width: 100%;
+                max-width: 340px;
+            }
+            .payment-wrap h3{
+                font-size: 17px;
+            }
+            .payment-wrap #rzp-button{
+                width: 100%;
+                padding: 13px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px){
+            .payment-wrap div{
+                padding: 25px 18px;
+            }
+            .payment-wrap h3{
+                font-size: 15px;
+            }
+        }
+    </style>
+
+    <div class="payment-wrap">
+        <div>
+            <h3>Total Amount: {{ total }}</h3>
+            <button id="rzp-button">Pay Now</button>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        var options = {
+            "key" : "{{razorpay_key}}",
+            "amount" : "{{ razorpay_order.amount }}",
+            "currency" : "INR",
+            "name" : "SD Restarunt",
+            "description" : "Food Order Payment",
+            "order_id" : "{{ razorpay_order.id }}",
+            "handler" : function(response){
+                window.location.href = "{% url 'payment_success' %}"
+            }
+        }
+        console.log("Razorpay Options:",options)
+        var rzp = new Razorpay(options);
+        document.getElementById('rzp-button').addEventListener("click",(e)=>{
+            console.log("Pay now clicked ")
+            rzp.open()
+            e.preventDefault()
+        })
+    </script>
+
+
+</body>
+</html>
+{% endblock %}

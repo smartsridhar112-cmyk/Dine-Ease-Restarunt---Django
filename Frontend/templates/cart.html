@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(to right,rgba(173, 173, 173, 0.238),rgba(120, 120, 120, 0.304));
+    }
+    .cart-container{
+        margin: 40px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
+    }
+    .cart-content{
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgba(0, 1, 0, 0.456);
+        display: flex;
+        justify-content: space-between;
+    }
+    img{
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .cart-inside-content{
+        width: 50%;
+        text-align: end;
+    }
+    .cart-inside-content .p1{
+        text-align: center;
+        font-size: 22px;
+        width: 100%;
+        text-wrap: nowrap;
+        margin: 10px;
+    }
+    .cart-inside-content .p2{
+        width: 100px;
+        text-align: start;
+        border: 2px solid black;
+        font-size: 18px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-left: 50px;
+        border-radius: 8px;
+    }
+    .cart-inside-content .p2 a{
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+    }
+    .cart-inside-content .p2 span{
+        width: 100%;
+        text-align: center;
+    }
+    .cart-inside-content .p2 .quantity-decrease{
+        border-right: 2px solid black;
+        width: 100%;
+        text-align: center;
+    }
+    .cart-inside-content .p2 .quantity-increase{
+        border-left: 2px solid black;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cart-inside-content .p3{
+        text-align: start;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .cart-inside-content .p3 span{
+        margin-left: 70px;
+    }
+    .cart-inside-content .cart-btn{
+        gap: 20px;
+        margin-top: 20px;
+        display: flex;
+    }
+    .cart-inside-content .cart-btn a{
+        text-decoration: none;
+        color: black;
+    }
+    .cart-inside-content .cart-btn a button{
+        width: 90px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        height: 30px;
+    }
+    @media screen and (max-width:1200px){
+        header input{
+          max-width: 400px;
+          margin-right: 60px;
+        }
+        header .head-content i{
+          right: 75px;
+        }
+      }
+
+      @media screen and (max-width:1004px){
+        header{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        header h1{
+            margin-left: 40px;
+            font-size: 22px;
+            margin-top: 15px;
+        }
+        header h3{
+          margin-top: 20px;
+          font-size: 14px;
+        }
+        header .head-content {
+            display: none;
+        }
+        header button{
+            border: none;
+            font-size: 20px;
+            background: none;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+        header .nav-login{
+          margin-left: 0;
+          padding-left: 20px;
+        }
+        .navbar-content {
+          width: 80px;
+          overflow: hidden;
+        }
+      }
+
+      @media screen and (max-width:678px){
+        header{
+            display: flex;
+            width: 100%;
+            padding: 15px;
+        }
+        header h1{
+            margin-left: 32px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        header h3{
+          margin-top: 5px;
+          font-size: 12px;
+        }
+        header .head-content {
+            display: none;
+        }
+        header button{
+            border: none;
+            font-size: 20px;
+            background: none;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+        header .nav-login{
+          margin-left: 0;
+          padding-left: 0;
+        }
+        header .nav-login h3{
+          font-size: 12px;
+        }
+        header .nav-login a p{
+          font-size: 14px;
+        }
+         .navbar-content {
+          top: 120px;
+          width: 70px;
+          overflow: hidden;
+        }
+      }
+
+      @media screen and (max-width:380px){
+        header h1{
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        header .nav-login{
+          gap: 6px;
+        }
+        .navbar-content {
+          width: 60px;
+        }
+      }
+
+    
+    
+</style>
+<body>
+   <div class="cart">
+        <div class="cart-container">
+        {% for allcart in cart %}
+            <div class="cart-content">
+                <img src="{{allcart.category.food_image.url}}" alt="" >
+                <div class="cart-inside-content">
+                    <p class="p1">{{allcart.food_name}}</p>
+                    <p class="p2">
+                        <a href="{% url 'update_quantity' allcart.id 'decrease' %}" class="quantity-decrease" ><span>-</span></a>
+                        <span>{{allcart.quantity}}</span>
+                        <a href="{% url 'update_quantity' allcart.id 'increase' %}" class="quantity-increase" ><span>+</span></a>
+                    </p>
+                    <p class="p3">Price : <span>&#8377.{{allcart.amount}}</span></p>
+                    <div class="cart-btn">
+                        <a href="{% url 'remove_cart' allcart.id %}" class="btn1"><button >Remove</button></a>
+                        <a href="{% url 'add_order' allcart.id %}" class="btn2"><button>Checkout</button></a>   
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+   </div>    
+</body>
+
+<script>
+
+</script>
+</html>
+{% endblock %}

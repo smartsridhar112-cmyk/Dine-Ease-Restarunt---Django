@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(to right,rgba(173, 173, 173, 0.238),rgba(120, 120, 120, 0.304));
+    }
+    .container{
+        margin: 20px;
+    }
+    .container .search-container{
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+    .menu-card{
+        border-radius: 8px;
+        padding: 20px;
+        height: 300px;
+        width: 200px;
+        box-shadow: 0px 0px 12px rgba(106, 95, 181, 0.558);
+        background-color: rgba(128, 128, 128, 0.178);
+    }
+    .container .search-container .menu-card img{
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+    .container .search-container .menu-card button{
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        background-color: white;
+        margin-top: 10px;
+        height: 30px;
+        width: 200px;
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Search Results For : {{query}}</h2>
+        <div class="search-container">
+            {% for food in results %}
+            <div class="menu-card">
+                <img src="{{ food.food_image.url }}" alt="{{ food.food_name }}">
+                <h3>{{ food.food_name }}</h3>
+                <p><span>&#8377;</span>{{ food.food_price }}</p>
+                <a href="{% url 'add_cart' food.id %}"><button>Add to Cart</button></a>
+            </div>
+            {% empty %}
+            <p>No Food Items</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .myorder-container{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+    .container{
+        margin-top: 20px;
+        justify-self: center;
+        padding: 30px;
+        background-color: lightcyan;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    }
+    .container img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .back-btn{
+        position: fixed;
+        bottom: 20px;
+        right: 50px;
+        background-color: black;
+        padding: 10px 27px;
+        border-radius: 12px;
+    }
+    .back-btn a{
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+    }
+</style>
+<body>
+    <h1>My Orders</h1>
+    <div class="myorder-container">
+    {% for order in allorders %}
+    <div class="container">
+        <img src="{{order.category.food_image.url}}" alt="">
+        <p>{{order.category.food_name}}</p>
+        <p>{{order.amount}}</p>
+        <p>{{order.defaults}}</p>
+    </div>    
+    {% endfor %}
+    </div>
+    <div class="back-btn">
+        <a href="{% url 'home' %}"><p><span><i class="fa-regular fa-hand-point-left"></i></span> Back</p></a>
+    </div>
+</body>
+</html>
+{% endblock %}

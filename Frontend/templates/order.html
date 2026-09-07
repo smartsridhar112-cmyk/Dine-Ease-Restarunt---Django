@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+  .side-navbar{
+    margin-top: 20px;
+    min-height: 100vh;
+    color: white;
+  }
+  .side-navbar .side-nav-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+  }
+  .side-navbar .side-nav-container .side-nav-content{
+    background-color: rgba(157, 148, 148, 0.37);
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgb(59, 59, 59);
+  }
+  .side-navbar .side-nav-container .side-nav-content img{
+    object-fit: cover;
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+  }
+  .side-navbar .side-nav-container .side-nav-content .side-nav-content1{
+    padding: 8px;
+  }
+  .side-navbar .side-nav-container .side-nav-content .side-nav-content1 p{
+    font-size: 20px;
+  }
+  .side-navbar .side-nav-container .side-nav-content .side-nav-content2 i {
+    font-size: 22px;
+    color: white;
+    margin-top: 5px;
+  }
+  .side-navbar .pay-btn{
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    background: black;
+    padding: 15px;
+    border-radius: 14px;
+    cursor: pointer;
+  }
+  .side-navbar .pay-btn a,.p1{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+  }
+</style>
+<body>
+  <div>
+    {% if orders %}
+    <div class="side-navbar">
+      <div class="side-nav-container">
+        {% for order in orders %}
+        <div class="side-nav-content">
+          <img src="{{order.category.food_image.url}}" alt="">
+          <div class="side-nav-content1">
+            <p>{{order.category.food_name}}</p>
+            <p><span>&#8377.</span>{{order.amount}}</p>
+          </div>
+          <div class="side-nav-content2">
+            <a href="{% url 'remove_order' order.id %}"><ion-icon name="trash-outline"></ion-icon> </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="pay-btn">
+        <a href="{% url 'checkout' %}"><p><span class="p1" >Proceed to Pay </span><span>&#8377.{{order_total}}</span></p></a>
+      </div>
+    </div>
+    {% else %}
+    <p>No Orders Available</p>
+    {% endif %}
+  </div>
+</body>
+</html>
+{% endblock %}

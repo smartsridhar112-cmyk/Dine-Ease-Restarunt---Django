@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        font-family: "Patrick Hand", cursive;
+        width: 100%;
+        background: linear-gradient(to right,rgba(173, 173, 173, 0.238),rgba(120, 120, 120, 0.304));
+    }
+
+    /* category */
+    .category-container{
+        margin: 50px;
+        box-shadow: 5px 5px 15px #969393e4, -3px -3px 4px #969393e4;
+        border-radius: 8px;
+        background-color: rgba(161, 158, 158, 0.166);
+        border: none;
+        padding: 20px;
+    }
+    .category-list{
+        display: flex;
+        margin: 10px;
+        overflow: scroll;
+        padding: 20px;
+        gap: 30px;
+    }
+    .category-list::-webkit-scrollbar{
+        display: none;
+    }
+    .category-container .category-content img{
+        width: 150px;
+        border-radius: 8px;
+        height: 150px;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .category-container .category-content a{
+        text-decoration: none;
+        color: black;
+    }
+    .category-container .category-content p{
+        text-align: center;
+    }
+
+    /* offers */
+    .speical-offers{
+        margin: 25px;   
+    }
+    .speical-offers h1{
+        margin-bottom: 15px;
+        margin-left: 20px;
+    }
+    .offer-container{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin-left: 25px;
+    }
+    
+    .offer-content img{
+        height:300px; 
+        width:400px;
+        box-shadow: 3px 3px 7px rgb(95, 94, 94);
+        border-radius: 8px;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    
+
+
+    @media screen and (max-width:678px) {
+
+        .category-container{
+            padding: 5px;
+        }
+        .category-list{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .offer-container{
+            display: block;
+            width: 100%;
+        }
+        .offer-content img{
+            height:300px; 
+            width:400px
+        }
+        .menu-content{
+            grid-template-columns: 1fr 1fr;
+        }
+        .offer-content p{
+            display: none;
+        }
+    }
+
+    @media screen and (min-width:678px) and (max-width:1004px) {
+        body{
+            width: 100%;
+        }
+        .category-container{
+            padding: 5px;
+        }
+        .category-list{
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .offer-container{
+            display: grid;
+            width: 98%;
+            grid-template-columns: 1fr 1fr;
+        }
+        .offer-content img{
+            height:300px; 
+            width:400px
+        } 
+    }
+</style>
+<body>
+    <!-- category -->
+    <div class="category-container">
+        <h2>Special Categories</h2>
+        <div class="category-list">
+            <div class="category-content">
+                <img src="/static/media/image/category image/pizza img.jpg" alt="">
+                <a href="{% url 'food_category_detail' 'current_category' 'Pizza' %}"><p>Pizza</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/bugger img.jpg" alt="">
+                <a href="{% url 'food_category_detail' 'current_category' 'Burger' %}"><p>Burger</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/rolls.png" alt="">
+                <a href="{% url 'food_category_detail' 'current_category' 'Rolls' %}"><p>Rolls</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/cake.jpg" alt="">
+                <a href="{% url 'food_category_detail' 'current_category' 'Cakes' %}"><p>Cake</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/icecream.jpeg" alt="">
+                <a href="{% url 'food_category_detail' 'current_category' 'Ice Cream' %}"><p>Ice Cream</p></a>
+            </div>
+            <!-- <div class="category-content">
+                <img src="/static/media/image/category image/north indian.avif" alt="">
+                <a href=""><p></p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/south indian.jpg" alt="">
+                <a href=""><p>South Indian</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/indian snakes.jpg" alt="">
+                <a href=""><p>Indian Snacks</p></a>
+            </div>
+            <div class="category-content">
+                <img src="/static/media/image/category image/desert.jpg" alt="">
+                <a href=""><p>Mouse</p></a>
+            </div> -->
+            <div class="category-content">
+                <img src="/static/media/image/category image/sandwich.jpg" alt="">
+                <a href="{% url 'food_category_detail' 'current_category'  'Sandwich' %}"><p>Snadwich</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="speical-offers">
+        <h1>Offers</h1>
+        <div class="offer-container">
+            <div class="offer-content">
+                <img src="/static/media/image/offers images/combo1.jpg" alt="" >
+            </div>
+            <div class="offer-content">
+                <img src="/static/media/image/offers images/combo2.jpg" alt="" >
+            </div>
+            <div class="offer-content">
+                <img src="/static/media/image/offers images/combo3.webp" alt="" >
+            </div>
+        </div>
+    </div>
+        {% for menu in category %}
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

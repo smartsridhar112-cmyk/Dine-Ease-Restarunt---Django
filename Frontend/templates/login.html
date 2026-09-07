@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Restarunt</title>
+</head>
+<body>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, rgba(173,173,173,0.238), rgba(120,120,120,0.304));
+            padding: 20px;
+        }
+        form{
+            width: 100%;
+            max-width: 380px;
+            background: white;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
+        }
+        form div{
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+        form label{
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #333;
+        }
+        form input{
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        form input:focus{
+            outline: none;
+            border-color: #3399cc;
+        }
+        form p{
+            color: red;
+            font-size: 13px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        form button{
+            width: 100%;
+            height: 42px;
+            border: none;
+            border-radius: 8px;
+            background: #3399cc;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        form button:hover{
+            background: #287da3;
+        }
+        body > div{
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        body > div p{
+            font-size: 14px;
+        }
+        body > div a{
+            color: #3399cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        body > div a:hover{
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive breakpoints ===== */
+        @media (max-width: 480px){
+            form{
+                padding: 30px 22px;
+                border-radius: 10px;
+            }
+            form input{
+                height: 38px;
+                font-size: 14px;
+            }
+            form button{
+                height: 40px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px){
+            body{
+                padding: 12px;
+            }
+            form{
+                padding: 25px 16px;
+            }
+        }
+    </style>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="">Username:</label>
+            <input type="text" name="username">
+        </div>
+        <div>
+            <label for="">Password:</label>
+            <input type="password" name="password">
+        </div>
+        <p>{{error}}</p>
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        <p>If you have any account? <span><a href="{% url 'signup' %}">Signup</a></span></p>
+    </div>
+</body>
+</html>
