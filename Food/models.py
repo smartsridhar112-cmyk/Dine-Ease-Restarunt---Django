@@ -1,11 +1,11 @@
 from django.db import models
 from django.conf import settings
-
+from decimal import Decimal
 class Category(models.Model):
 
     food_image= models.ImageField(upload_to='images/', null=True)
-    food_name =models.CharField(max_length=50, null=True)
-    food_price = models.FloatField(default=0)
+    food_name =models.CharField(max_length=50,null=True,blank=True)
+    food_price = models.DecimalField(decimal_places=2,max_digits=5)
     food_availabity = models.BooleanField(default=False)
     category_choice =[
         ("veg","veg"),
@@ -29,30 +29,27 @@ class Category(models.Model):
     ]
     food_category = models.CharField(max_length=30, choices=food_choice,null=True,blank=True)
 
-    def __str__(self):
-        return self.food_name
+    def __str__(self) -> str:
+        return self.food_name or ""
 
 
 class Cart(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     food_name=models.CharField(max_length=50,null=True)
-    quantity= models.FloatField(default=1)
+    quantity= models.IntegerField(default=1)
     amount = models.DecimalField(max_digits=5,decimal_places=2)
-
-    def __str__(self):
-        return self.category.food_name
     
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=True,blank=True)
     category= models.ForeignKey(Category,on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1,null=True)
+    quantity = models.IntegerField(default=1)
     amount = models.DecimalField(max_digits=5,decimal_places=2)
     status = models.CharField(max_length=20,default="pending")
     payment_id= models.CharField(max_length=50,blank=True,null=True)
 
-    def __str__(self):
-        return self.category.food_name
+    def __str__(self) -> str:
+        return self.category.food_name or ""
 
 
 class MyOrders(models.Model):
@@ -61,7 +58,7 @@ class MyOrders(models.Model):
     order= models.ForeignKey(Order,on_delete=models.CASCADE)
     datetime= models.DateTimeField(auto_now_add=True)
     cart=models.ForeignKey(Cart,on_delete=models.PROTECT,null=True)
-    amount = models.CharField(max_length=20,default=0,null=True)
+    amount = models.DecimalField(max_digits=5,decimal_places=2)
 
-    def __str__(self):
-        return self.category.food_name
+    def __str__(self) -> str:
+        return self.category.food_name or ""

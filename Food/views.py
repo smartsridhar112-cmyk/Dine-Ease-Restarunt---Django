@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 import razorpay
@@ -98,7 +100,7 @@ def CheckOut(request):
 
     client= razorpay.Client(auth=(RAZORPAY_KEY_ID,RAZORPAY_KEY_SECRET ))
 
-    razorpay_order = client.order.create({
+    razorpay_order = getattr(client,"order").create({
         "amount" : int(total * 100),
         "currency": "INR",
         "payment_capture" : 1
