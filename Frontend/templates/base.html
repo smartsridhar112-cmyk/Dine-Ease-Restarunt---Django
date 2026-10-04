@@ -3,33 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> SD Restarunt</title>
-    <link rel="icon" href="/static/media/image/logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"/>
+    <title>SD Restarunt</title>
+    <link rel="icon" href="/static/media/image/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/8.0.13/esm/ionicons.min.js">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/8.0.13/esm/ionicons.min.js"
+    />
     <style>
       * {
-         margin: 0; 
-         padding: 0; 
-        }
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: "Patrick Hand", cursive;
         overflow-x: hidden;
       }
       /* header */
-      header{
+      header {
         padding: 20px;
         display: flex;
         justify-content: space-between;
         /* align-items: center; */
         box-shadow: 2px 2px 8px rgb(12, 12, 12);
         border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px ;
+        border-bottom-right-radius: 20px;
       }
-      header h1{
+      header h1 {
         font-family: "Permanent Marker", cursive;
         margin-left: 100px;
         width: 100%;
@@ -39,7 +48,7 @@
         color: white;
         width: 100%;
       }
-      header input{
+      header input {
         background: lightgray;
         border: none;
         width: 550px;
@@ -50,43 +59,41 @@
         border-radius: 8px;
         font-size: 18px;
       }
-      header .head-content i{
-          position: absolute;
-          right: 125px;
-          top: 20px;
-          font-size: 20px;
-          cursor: pointer;
+      header .head-content i {
+        position: absolute;
+        right: 125px;
+        top: 20px;
+        font-size: 20px;
+        cursor: pointer;
       }
-      header .nav-login{
+      header .nav-login {
         width: 100%;
         display: flex;
         justify-content: start;
         margin-top: 20px;
-
       }
-      header .nav-login h3{
+      header .nav-login h3 {
         font-weight: normal;
       }
-      header .nav-login a{
+      header .nav-login a {
         width: 100%;
         text-decoration: none;
         color: black;
         text-align: center;
       }
-      header .nav-login a p{
+      header .nav-login a p {
         display: inline;
         padding: 5px;
         font-size: 20px;
       }
-      
-      
+
       /* navbar */
       .navbar-content {
         overflow-x: hidden;
         clip-path: ellipse(100% 80% at 50% 50%);
         position: fixed;
         top: 150px;
-        left: -280px; 
+        left: -280px;
         width: 100px;
         height: 70vh;
         background: rgba(4, 4, 57, 0.952);
@@ -95,41 +102,41 @@
         margin-left: 20px;
         border-radius: 8px;
       }
-      .navbar-content.active{
+      .navbar-content.active {
         left: 5px;
         transition: all 1s ease;
       }
-      .navbar-content.nav-icons{
+      .navbar-content.nav-icons {
         position: relative;
       }
-      .navbar-content .nav-icons ul{
+      .navbar-content .nav-icons ul {
         position: absolute;
         top: 35px;
         left: 0;
         width: 100%;
       }
-      .navbar-content .nav-icons ul li{
+      .navbar-content .nav-icons ul li {
         position: relative;
         width: 100%;
         list-style: none;
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
       }
-      .navbar-content .nav-icons ul li:hover{
+      .navbar-content .nav-icons ul li:hover {
         background-color: white;
         color: black;
       }
-      .navbar-content .nav-icons ul li a{
+      .navbar-content .nav-icons ul li a {
         position: relative;
         display: flex;
         width: 100%;
         text-decoration: none;
         color: white;
       }
-      .navbar-content .nav-icons ul li a:hover{
+      .navbar-content .nav-icons ul li a:hover {
         color: rgba(4, 4, 57, 0.952);
       }
-      .navbar-content .nav-icons ul li a .icons{
+      .navbar-content .nav-icons ul li a .icons {
         position: relative;
         display: block;
         min-width: 100%;
@@ -137,10 +144,10 @@
         text-align: center;
         line-height: 90px;
       }
-      .navbar-content .nav-icons ul li a .icons ion-icon{
+      .navbar-content .nav-icons ul li a .icons ion-icon {
         font-size: 1.7rem;
       }
-      .navbar-content .nav-icons ul li a .title{
+      .navbar-content .nav-icons ul li a .title {
         position: absolute;
         top: 50px;
         display: flex;
@@ -149,8 +156,8 @@
         font-size: 12px;
       }
 
-      .navbar-content .nav-icons ul li:hover a::before{
-        content: '';
+      .navbar-content .nav-icons ul li:hover a::before {
+        content: "";
         position: absolute;
         background: transparent;
         width: 50px;
@@ -158,11 +165,11 @@
         right: 0;
         top: -50px;
         border-radius: 50%;
-        box-shadow: 29px 30px 0 2px white ;
+        box-shadow: 29px 30px 0 2px white;
       }
 
-      .navbar-content .nav-icons ul li:hover a::after{
-        content: '';
+      .navbar-content .nav-icons ul li:hover a::after {
+        content: "";
         position: absolute;
         background: transparent;
         width: 50px;
@@ -170,12 +177,10 @@
         right: 0;
         top: 80px;
         border-radius: 50%;
-        box-shadow: 29px -30px 0 2px white ;
+        box-shadow: 29px -30px 0 2px white;
       }
 
-
-
-      #menuBtn{
+      #menuBtn {
         top: 20px;
         border: none;
         margin: 15px;
@@ -183,69 +188,88 @@
         background: transparent;
         cursor: pointer;
       }
-      #menuBtn i{
+      #menuBtn i {
         font-size: 24px;
       }
 
+      @media screen and (max-width: 678px) {
+        header {
+          display: flex;
+          width: 100%;
+        }
+        header .nav-login {
+          width: 100%;
+          display: flex;
+        }
+        header .nav-login h3 {
+          font-weight: normal;
+          margin-top: -0px;
+          margin-left: 25px;
+          font-size: 14px;
+        }
+        header .nav-login a {
+          width: 100%;
+          text-decoration: none;
+          color: black;
+          text-align: center;
+        }
+        header .nav-login a p {
+          font-size: 12px;
+        }
 
-  
-      @media screen and (max-width:678px){
-        header{
-            display: flex;
-            width: 92%;
-        }
-        header h1{
-            margin-left: 32px;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-        header h3{
+        header h3 {
           margin-top: 5px;
           font-size: 12px;
         }
         header .head-content {
-            display: none;
+          display: none;
         }
-        header button{
-            border: none;
-            font-size: 20px;
-            background: none;
-            margin-right: 40px;
-            cursor: pointer;
+        header button {
+          border: none;
+          font-size: 20px;
+          background: none;
+          margin-right: 40px;
+          cursor: pointer;
         }
-        header .nav-login{
+        header .nav-login {
           margin-left: -30px;
         }
-         .navbar-content {
+        .navbar-content {
           width: 80px;
           overflow: hidden;
         }
       }
 
-      @media screen and (max-width:1004px){
-        header{
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
+      @media screen and (max-width: 1004px) {
+        header {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
         }
-        header h1{
-            margin-left: 40px;
-            font-size: 22px;
-            margin-top: 15px;
+        header h1 {
+          margin-left: 40px;
+          font-size: 22px;
+          margin-top: 15px;
         }
-        header h3{
+        header h3 {
           margin-top: 50px;
           font-size: 14px;
         }
-        header .head-content {
-            display: none;
+        header .nav-login h3 {
+          font-weight: normal;
+          margin-top: -0px;
+          margin-left: 25px;
+          font-size: 14px;
         }
-        header button{
-            border: none;
-            font-size: 20px;
-            background: none;
-            margin-right: 40px;
-            cursor: pointer;
+        header .head-content {
+          display: none;
+        }
+        header button {
+          border: none;
+          font-size: 20px;
+          background: none;
+          margin-right: 40px;
+          cursor: pointer;
         }
         .navbar-content {
           width: 80px;
@@ -256,18 +280,24 @@
   </head>
   <body>
     <!-- header -->
-    <header >
-        <h1>Dine Ease Restarunt</h1>
-        <div class="head-content">
-            <form method="GET" action="{% url 'search' %}">
-              <input type="search" name="q" placeholder="Type Your food Names">
-              <button type="submit"><i class="fa-brands fa-sistrix"></i></button>
-            </form>
-        </div>
-        <div class="nav-login">
-          <h3><span style="font-weight: bold; margin-right: 10px;">Welcome..!</span>{{user.username}}</h3>
-          <a href="{% url 'logout' %}"><ion-icon name="log-in-outline"></ion-icon><p>Logout</p></a>
-        </div>
+    <header>
+      <h1>Dine Ease Restarunt</h1>
+      <div class="head-content">
+        <form method="GET" action="{% url 'search' %}">
+          <input type="search" name="q" placeholder="Type Your food Names" />
+          <button type="submit"><i class="fa-brands fa-sistrix"></i></button>
+        </form>
+      </div>
+      <div class="nav-login">
+        <h3>
+          <span style="font-weight: bold; margin-right: 10px">Welcome..!</span
+          >{{user.username}}
+        </h3>
+        <a href="{% url 'logout' %}"
+          ><ion-icon name="log-in-outline"></ion-icon>
+          <p>Logout</p></a
+        >
+      </div>
     </header>
 
     <!-- navbar -->
@@ -276,31 +306,41 @@
         <ul>
           <li>
             <a href="{% url 'home' %}">
-              <span class="icons"><ion-icon name="home-outline"></ion-icon></span>
+              <span class="icons"
+                ><ion-icon name="home-outline"></ion-icon
+              ></span>
               <span class="title">Home</span>
             </a>
           </li>
           <li>
             <a href="{% url 'categories_list' %}">
-              <span class="icons"><ion-icon name="copy-outline"></ion-icon></span>
+              <span class="icons"
+                ><ion-icon name="copy-outline"></ion-icon
+              ></span>
               <span class="title">Categories</span>
             </a>
           </li>
           <li>
             <a href="{% url 'all_cart' %}">
-              <span class="icons"><ion-icon name="cart-outline"></ion-icon></span>
+              <span class="icons"
+                ><ion-icon name="cart-outline"></ion-icon
+              ></span>
               <span class="title">Cart</span>
             </a>
           </li>
           <li>
             <a href="{% url 'all_order' %}">
-              <span class="icons"><ion-icon name="golf-outline"></ion-icon></span>
+              <span class="icons"
+                ><ion-icon name="golf-outline"></ion-icon
+              ></span>
               <span class="title">All Orders</span>
-            </a>    
+            </a>
           </li>
           <li>
             <a href="{% url 'my_orders' %}">
-              <span class="icons"><ion-icon name="bag-outline"></ion-icon></span>
+              <span class="icons"
+                ><ion-icon name="bag-outline"></ion-icon
+              ></span>
               <span class="title">My Orders</span>
             </a>
           </li>
@@ -308,23 +348,25 @@
       </div>
     </div>
     <button id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-    
-    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
-     
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"
+    ></script>
+
     <script>
       // navbar
       const navcontent = document.querySelector(".navbar-content");
       const btn = document.getElementById("menuBtn");
 
-      btn.addEventListener("click",()=>{
-        navcontent.classList.toggle("active")
-      })
-
-
-
+      btn.addEventListener("click", () => {
+        navcontent.classList.toggle("active");
+      });
     </script>
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
   </body>
 </html>
